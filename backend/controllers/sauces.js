@@ -42,7 +42,7 @@ exports.modifySauces = (req, res, next) => {
         } : { ...req.body };
     Sauces.updateOne({ _id: req.params.id }, { ...thingObject, _id: req.params.id })
         .then(() => res.status(200).json({ message: 'Objet modifié !'}))
-        .catch(error => res.status(400).json({ error }));
+        .catch(error => res.status(403).json({ error, message: 'unauthorized request !' }));
 };
 
 exports.deleteSauces = (req, res, next) => {
